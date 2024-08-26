@@ -1,149 +1,25 @@
-'use client'
-
-import React from 'react'
-import Image from 'next/image'
-import { Button } from "@/components/ui/button"
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-
-const discountSlides = [
-  {
-    title: "Get a Discount For Newly Married Couples",
-    description: "Celebrate your new journey together with our exclusive honeymoon packages. Enjoy romantic getaways and create unforgettable memories.",
-    image: "http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/couple-relaxing-in-a-hammock-by-the-beach-9FE8MAG.jpg"
-  },
-  {
-    title: "Summer Beach Party Special",
-    description: "Join our vibrant beach parties and make unforgettable summer memories. Special discounts for group bookings!",
-    image: "http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/beach-party-dj-set-K9SHFY4.jpg"
-  },
-  {
-    title: "Girls' Getaway Package",
-    description: "Grab your best friends and enjoy a fun-filled vacation. Special rates for girl groups!",
-    image: "http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-cheering-with-cocktails-at-5V9ZUL7.jpg"
-  }
-]
-
-export default function DiscountSlider() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    arrows: false,
-    customPaging: function(i) {
-      return (
-        <div className="w-3 h-3 bg-white rounded-full mx-1 opacity-50 hover:opacity-100 transition-opacity duration-200"></div>
-      )
-    }
-  }
-
-  return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <Slider {...settings}>
-          {discountSlides.map((slide, index) => (
-            <div key={index}>
-              <div className="relative h-[400px] rounded-lg overflow-hidden">
-                <Image
-                  src={slide.image}
-                  alt={slide.title}
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <div className="absolute inset-0 bg-teal-500 bg-opacity-70 flex items-center">
-                  <div className="text-white p-8 max-w-2xl">
-                    <h2 className="text-4xl font-bold mb-4">{slide.title}</h2>
-                    <p className="text-xl mb-6">{slide.description}</p>
-                    <Button className="bg-orange-500 text-white hover:bg-orange-600 transition-colors duration-200">
-                      CONTACT US
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Empathic Voice Interface</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="btn-container">
+        <button id="start-btn">Start</button>
+        <button id="stop-btn" disabled="true">Stop</button>
       </div>
-    </section>
-  )
-
-  'use client'
-
-import React from 'react'
-import Image from 'next/image'
-import { Button } from "@/components/ui/button"
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-
-const discountSlides = [
-  {
-    title: "Get a Discount For Newly Married Couples",
-    description: "Celebrate your new journey together with our exclusive honeymoon packages. Enjoy romantic getaways and create unforgettable memories.",
-    image: "http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/couple-relaxing-in-a-hammock-by-the-beach-9FE8MAG.jpg"
-  },
-  {
-    title: "Summer Beach Party Special",
-    description: "Join our vibrant beach parties and make unforgettable summer memories. Special discounts for group bookings!",
-    image: "http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/beach-party-dj-set-K9SHFY4.jpg"
-  },
-  {
-    title: "Girls' Getaway Package",
-    description: "Grab your best friends and enjoy a fun-filled vacation. Special rates for girl groups!",
-    image: "http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-cheering-with-cocktails-at-5V9ZUL7.jpg"
-  }
-]
-
-export default function DiscountSlider() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    arrows: false,
-    customPaging: function(i) {
-      return (
-        <div className="w-3 h-3 bg-white rounded-full mx-1 opacity-50 hover:opacity-100 transition-opacity duration-200"></div>
-      )
-    }
-  }
-
-  return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <Slider {...settings}>
-          {discountSlides.map((slide, index) => (
-            <div key={index}>
-              <div className="relative h-[400px] rounded-lg overflow-hidden">
-                <Image
-                  src={slide.image}
-                  alt={slide.title}
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <div className="absolute inset-0 bg-teal-500 bg-opacity-70 flex items-center">
-                  <div className="text-white p-8 max-w-2xl">
-                    <h2 className="text-4xl font-bold mb-4">{slide.title}</h2>
-                    <p className="text-xl mb-6">{slide.description}</p>
-                    <Button className="bg-orange-500 text-white hover:bg-orange-600 transition-colors duration-200">
-                      CONTACT US
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
+      <div id="heading-container">
+        <h2>Empathic Voice Interface (EVI)</h2>
+        <p>
+          Welcome to our TypeScript sample implementation of the Empathic Voice Interface!
+          Click the "Start" button and begin talking to interact with EVI.
+        </p>
       </div>
-    </section>
-  )
-}
-}
+      <div id="chat"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
