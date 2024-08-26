@@ -4,9 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Empathic Voice Interface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.5s ease-out;
+      }
+      .animation-delay-300 {
+        animation-delay: 300ms;
+      }
+      .animation-delay-600 {
+        animation-delay: 600ms;
+      }
+      .animation-delay-900 {
+        animation-delay: 900ms;
+      }
+    </style>
   </head>
   <body>
-    <div id="app">
+    <!-- Hero Section will be inserted here by hero.js -->
+
+    <div id="app" class="mt-20">
       <div id="btn-container">
         <button id="start-btn">Start</button>
         <button id="stop-btn" disabled="true">Stop</button>
@@ -21,5 +48,6 @@
       <div id="chat"></div>
     </div>
     <script type="module" src="/src/main.ts"></script>
+    <script src="/hero.js"></script>
   </body>
 </html>
