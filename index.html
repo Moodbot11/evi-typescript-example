@@ -6,6 +6,50 @@
     <title>Empathic Voice Interface</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+      /* Fallback styles in case Tailwind doesn't load */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+      #hero-container {
+        background-color: #1a202c;
+        color: white;
+        padding: 2rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      p {
+        margin-bottom: 1rem;
+      }
+      .btn {
+        display: inline-block;
+        background-color: #3490dc;
+        color: white;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        border-radius: 0.25rem;
+      }
+      #app {
+        padding: 2rem;
+      }
+      /* Animation keyframes */
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -31,9 +75,20 @@
     </style>
   </head>
   <body>
-    <div id="hero-container"></div>
+    <div id="hero-container">
+      <div class="container">
+        <h2 class="animate-fade-in-up">Artificial Intelligence With Feelings</h2>
+        <h1 class="animate-fade-in-up animation-delay-300">Outsells humans on average by 50%!</h1>
+        <p class="animate-fade-in-up animation-delay-600">
+          The future is here. Imagine 50% more sales at a fraction of the cost you're paying now for your sales team. You never have to pay commissions!
+        </p>
+        <div class="animate-fade-in-up animation-delay-900">
+          <a href="/booking" class="btn">Make an appointment now</a>
+        </div>
+      </div>
+    </div>
 
-    <div id="app" class="mt-20">
+    <div id="app">
       <div id="btn-container">
         <button id="start-btn">Start</button>
         <button id="stop-btn" disabled="true">Stop</button>
@@ -48,64 +103,5 @@
       <div id="chat"></div>
     </div>
     <script type="module" src="/src/main.ts"></script>
-    <script>
-      const slides = [
-        'https://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/beach-party-dj-set-K9SHFY4.jpg',
-        'https://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-cheering-with-cocktails-at-5V9ZUL7.jpg',
-        'https://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-drinking-cocktails-at-bar-o-9ZJAQLJ.jpg'
-      ];
-
-      let currentSlide = 0;
-
-      function createHeroSection() {
-        const heroContainer = document.getElementById('hero-container');
-        heroContainer.innerHTML = `
-          <section class="relative h-screen overflow-hidden">
-            ${slides.map((slide, index) => `
-              <div 
-                class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out"
-                style="opacity: ${index === 0 ? 1 : 0}; z-index: ${index === 0 ? 1 : 0}"
-              >
-                <img
-                  src="${slide}"
-                  alt="AI Sales Assistant slide ${index + 1}"
-                  class="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
-            `).join('')}
-            <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
-            <div class="absolute inset-0 flex items-center z-20">
-              <div class="container mx-auto px-4">
-                <div class="max-w-3xl">
-                  <h2 class="text-xl md:text-2xl text-white mb-4 font-light animate-fade-in-up">Artificial Intelligence With Feelings</h2>
-                  <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-6 animate-fade-in-up animation-delay-300">
-                    Outsells humans on average by 50%!
-                  </h1>
-                  <p class="text-white text-lg mb-8 animate-fade-in-up animation-delay-600">
-                    The future is here. Imagine 50% more sales at a fraction of the cost you're paying now for your sales team. You never have to pay commissions!
-                  </p>
-                  <div class="flex space-x-4 animate-fade-in-up animation-delay-900">
-                    <a href="/booking" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300 cursor-pointer">
-                      Make an appointment now
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        `;
-
-        setInterval(() => {
-          const slideElements = document.querySelectorAll('.hero-slide');
-          slideElements[currentSlide].style.opacity = '0';
-          slideElements[currentSlide].style.zIndex = '0';
-          currentSlide = (currentSlide + 1) % slides.length;
-          slideElements[currentSlide].style.opacity = '1';
-          slideElements[currentSlide].style.zIndex = '1';
-        }, 5000);
-      }
-
-      createHeroSection();
-    </script>
   </body>
 </html>
