@@ -1,223 +1,129 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Bot Solutions - Next-Gen Customer Engagement</title>
+    <title>Antares Travel Club</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Roboto:wght@700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3498db',
-                        secondary: '#2c3e50',
-                        accent: '#e74c3c',
-                    },
-                    fontFamily: {
-                        sans: ['Raleway', 'sans-serif'],
-                        display: ['Roboto', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Cormorant:wght@600&display=swap" rel="stylesheet">
+     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <style>
-        .swiper-slide {
-            background-size: cover;
-            background-position: center;
-        }
-        #app {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-        #chat {
-            height: 300px;
-            overflow-y: auto;
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-    </style>
-</head>
-<body class="font-sans">
-    <header class="absolute top-0 left-0 right-0 z-50">
-        <nav class="container mx-auto px-4 py-6 flex justify-between items-center">
-            <a href="#" class="text-white text-2xl font-bold">AI Bot Solutions</a>
-            <ul class="hidden md:flex space-x-6 text-white">
-                <li><a href="#" class="hover:text-accent">Home</a></li>
-                <li><a href="#" class="hover:text-accent">Features</a></li>
-                <li><a href="#" class="hover:text-accent">Pricing</a></li>
-                <li><a href="#" class="hover:text-accent">Contact</a></li>
-            </ul>
-            <button class="md:hidden text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </nav>
     </header>
+         <main>
+       <div id="simple-carousel" class="relative h-screen overflow-hidden"></div>
+    <div class="absolute inset-0 transition-opacity duration-1000" style="background-image: url('http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/beach-party-dj-set-K9SHFY4.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" style="background-image: url('http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-cheering-with-cocktails-at-5V9ZUL7.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" style="background-image: url('http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-drinking-cocktails-at-bar-o-9ZJAQLJ.jpg'); background-size: cover; background-position: center;"></div>
+<script>
+<div id="simple-carousel" class="relative h-screen overflow-hidden">
+    <img src="http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/beach-party-dj-set-K9SHFY4.jpg" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000">
+    <img src="http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-cheering-with-cocktails-at-5V9ZUL7.jpg" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+    <img src="http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-drinking-cocktails-at-bar-o-9ZJAQLJ.jpg" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+</div>
+        setInterval(() => {
+            slides[currentSlide].classList.add('opacity-0');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.remove('opacity-0');
+        }, 5000); // Change slide every 5 seconds
+    }
 
-    <main>
-        <section class="relative h-screen">
-            <div class="swiper-container h-full">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');"></div>
-                    <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');"></div>
-                    <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');"></div>
+    // Run the carousel without an event listener
+    simpleCarousel();
+</script>       
+    
+        <section id="video" class="w-full bg-gray-100">
+        <h2 class="text video-3xl font-bold text-center py-8">Experience Luxury Travel</h2>
+        <div class="w-full" style="height: 80vh;">
+            <iframe 
+                src="https://myidecide.net/XVI8RE" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen
+                class="w-full h-full"
+            ></iframe>
+        </div>
+    </section>
+<section class="evi-section py-16 min-h-screen w-full flex items-center justify-center">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8 text-white shadow-text"> Click the button to speak with an agent 24 hours a day</h2>
+        <div id="app" class="max-w-sm mx-auto bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg shadow-lg overflow-hidden border border-gray-200 border-opacity-30">
+            <div class="p-4 bg-gray-100 bg-opacity-20 border-b border-gray-200 border-opacity-30">
+                <div id="btn-container" class="flex justify-center space-x-4 mb-4">
+                    <button id="start-btn" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Start</button>
+                    <button id="stop-btn" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300" disabled>Stop</button>
                 </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div id="heading-container" class="text-center">
+                    <h3 class="text-lg font-bold mb-2 text-white">Welcome to Antares Travel Club</h3>
+                    <p class="text-sm text-gray-200">
+                        Click "Start" and and you'll be connected to an agent immediately.
+                    </p>
+                </div>
             </div>
-            <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
-            <div class="absolute inset-0 flex items-center z-20">
-                <div class="container mx-auto px-4">
-                    <h3 class="text-white text-xl mb-4 font-light">Next-Gen Customer Engagement</h3>
-                    <h1 class="text-white text-4xl md:text-6xl font-display mb-6">AI Bots with Emotions</h1>
-                    <p class="text-white max-w-xl mb-8">Experience the future of customer service with our AI bots that understand and respond to human emotions. Boost your CRM and phone room efficiency today!</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="bg-primary text-white px-6 py-3 rounded hover:bg-opacity-90 transition duration-300">Get Started</a>
-                        <a href="#" class="border border-white text-white px-6 py-3 rounded hover:bg-white hover:text-primary transition duration-300 flex items-center" id="playVideo">
-                            <span class="mr-2">Watch Demo</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
+            <div id="chat" class="bg-white bg-opacity-10 p-4 h-40 overflow-y-auto"></div>
+        </div>
+    </div>
+</section>
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<h3 class="text-xl font-semibold mb-2">Best Services</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const startBtn = document.getElementById('start-btn');
+
+        setTimeout(() => {
+            if (startBtn) {
+                startBtn.click();
+            }
+    <script>
+        new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+            },
+            effect: 'fade',
+        });
+</script>
+    </script>
+<!-- Continue from the previous HTML -->
+
+        <section class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-wrap items-center">
+<h2 class="text-3xl font-serif text-center mb-8">Check Out The Luxury at Our Res
                 </div>
             </div>
         </section>
 
-        <section class="py-16 bg-primary text-white">
+
+            <section class="py-16 bg-white">
+        <section class="py-16 bg-white">
             <div class="container mx-auto px-4">
                 <div class="flex flex-wrap items-center">
                     <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
-                        <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80" alt="AI Bot" class="mx-auto rounded-lg shadow-lg">
-                    </div>
-                    <div class="w-full lg:w-1/2 lg:pl-16">
-                        <h3 class="text-xl mb-2">Revolutionary Technology</h3>
-                        <h2 class="text-3xl font-display mb-6">Emotional AI for Enhanced Customer Experience</h2>
-                        <p class="mb-6">Our AI bots are equipped with advanced emotional intelligence, allowing them to understand and respond to customer sentiments. This leads to more meaningful interactions, higher customer satisfaction, and improved conversion rates.</p>
-                        <ul class="space-y-2">
-                            <li>✓ Emotion recognition and response</li>
-                            <li>✓ Seamless integration with existing CRM systems</li>
-                            <li>✓ 24/7 availability and instant response times</li>
-                            <li>✓ Continuous learning and improvement</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer class="bg-secondary text-white py-12">
-            <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-4">AI Bot Solutions</h3>
-                        <p class="mb-4">Revolutionizing customer engagement with emotional AI technology.</p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-white hover:text-accent"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="text-white hover:text-accent"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-white hover:text-accent"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="hover:text-accent">Home</a></li>
-                            <li><a href="#" class="hover:text-accent">Features</a></li>
-                            <li><a href="#" class="hover:text-accent">Pricing</a></li>
-                            <li><a href="#" class="hover:text-accent">Contact</a></li>
-                        </ul>
-                    </div>
+<h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <div>
                         <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
                         <ul class="space-y-2">
-                            <li>123 AI Street, Tech City, TC 12345</li>
+                            <li>123 Beach Road, Tropical Island</li>
+                            <li>123 Beach Road, Tropical Island</li>
                             <li>Phone: +1 (234) 567-8901</li>
-                            <li>Email: info@aibotsolutions.com</li>
+                            <li>Email: info@besort.com</li>
                         </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
-                        <p class="mb-4">Stay updated with the latest in AI technology and customer engagement solutions.</p>
-                        <form>
-                            <input type="email" placeholder="Your email" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white mb-2">
-                            <button type="submit" class="w-full bg-accent text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition duration-300">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                    <p>&copy; 2023 AI Bot Solutions. All rights reserved.</p>
-                </div>
+<h4 class="text-lg font-semibold mb-4">Newsletter</h4>
             </div>
         </footer>
     </main>
-
-    <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
-        <div class="bg-white p-4 rounded-lg">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="AI Bot Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <button id="closeVideo" class="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-opacity-90 transition duration-300">Close</button>
-        </div>
-    </div>
-
-    <div id="app">
-      <div id="btn-container">
-        <button id="start-btn">Start</button>
-        <button id="stop-btn" disabled="true">Stop</button>
-      </div>
-      <div id="heading-container">
-        <h2>Welcome to AI Bot Solutions</h2>
-        <p>
-           Experience our emotional AI bot firsthand!
-          Click the "Start" button and begin talking to interact with our AI.
-        </p>
-      </div>
-      <div id="chat"></div>
-    </div>
+     <script type="module" src="/src/main.ts"></script>
 
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            new Swiper('.swiper-container', {
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                autoplay: {
-                    delay: 5000,
-                },
-                effect: 'fade',
-            });
-
-            const videoModal = document.getElementById('videoModal');
-            const playVideo = document.getElementById('playVideo');
-            const closeVideo = document.getElementById('closeVideo');
-
-            playVideo.addEventListener('click', function(e) {
-                e.preventDefault();
-                videoModal.classList.remove('hidden');
-            });
-
-            closeVideo.addEventListener('click', function() {
-                videoModal.classList.add('hidden');
-            });
-        });
-    </script>
-    <script type="module" src="/src/main.ts"></script>
 </body>
-</html>
