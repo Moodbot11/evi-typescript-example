@@ -6,50 +6,7 @@
     <title>Empathic Voice Interface</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      /* Fallback styles in case Tailwind doesn't load */
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        color: #333;
-      }
-      #hero-container {
-        background-color: #1a202c;
-        color: white;
-        padding: 2rem;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-      }
-      .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-      }
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-      }
-      h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
-      p {
-        margin-bottom: 1rem;
-      }
-      .btn {
-        display: inline-block;
-        background-color: #3490dc;
-        color: white;
-        padding: 0.5rem 1rem;
-        text-decoration: none;
-        border-radius: 0.25rem;
-      }
-      #app {
-        padding: 2rem;
-      }
-      /* Animation keyframes */
+      /* Existing styles */
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -72,23 +29,56 @@
       .animation-delay-900 {
         animation-delay: 900ms;
       }
+
+      /* Hero section styles */
+      #hero-container {
+        background-color: #1a202c;
+        color: white;
+        padding: 2rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .hero-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .hero-text {
+        margin-bottom: 1rem;
+      }
+      .hero-button {
+        display: inline-block;
+        background-color: #3490dc;
+        color: white;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        border-radius: 0.25rem;
+      }
     </style>
   </head>
   <body>
     <div id="hero-container">
-      <div class="container">
-        <h2 class="animate-fade-in-up">Artificial Intelligence With Feelings</h2>
-        <h1 class="animate-fade-in-up animation-delay-300">Outsells humans on average by 50%!</h1>
-        <p class="animate-fade-in-up animation-delay-600">
+      <div class="hero-content">
+        <h2 class="hero-subtitle animate-fade-in-up">Artificial Intelligence With Feelings</h2>
+        <h1 class="hero-title animate-fade-in-up animation-delay-300">Outsells humans on average by 50%!</h1>
+        <p class="hero-text animate-fade-in-up animation-delay-600">
           The future is here. Imagine 50% more sales at a fraction of the cost you're paying now for your sales team. You never have to pay commissions!
         </p>
         <div class="animate-fade-in-up animation-delay-900">
-          <a href="/booking" class="btn">Make an appointment now</a>
+          <a href="/booking" class="hero-button">Make an appointment now</a>
         </div>
       </div>
     </div>
 
-    <div id="app">
+    <div id="app" class="mt-20">
       <div id="btn-container">
         <button id="start-btn">Start</button>
         <button id="stop-btn" disabled="true">Stop</button>
