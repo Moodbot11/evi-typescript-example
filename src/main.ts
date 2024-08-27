@@ -1,9 +1,4 @@
-import { initializeHero } from './hero.js';
 
-// Initialize the hero section
-initializeHero();
-
-// Your existing bot code starts her
 import {
   Hume,
   HumeClient,
