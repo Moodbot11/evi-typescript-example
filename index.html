@@ -6,9 +6,7 @@
     <title>AI Bot Solutions - Next-Gen Customer Engagement</title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <style>
-        /* Inline styles to replace Tailwind CSS */
         body, html {
             margin: 0;
             padding: 0;
@@ -34,7 +32,7 @@
             padding: 10px;
             border-bottom: 1px solid #eee;
         }
-        /* Add more styles here to replace Tailwind classes */
+        /* Add more styles as needed */
     </style>
 </head>
 <body>
@@ -63,36 +61,19 @@
                 <div class="swiper-button-next"></div>
             </div>
             <div class="hero-content">
-                <h3>Next-Gen Customer Engagement</h3>
                 <h1>AI Bots with Emotions</h1>
-                <p>Experience the future of customer service with our AI bots that understand and respond to human emotions. Boost your CRM and phone room efficiency today!</p>
-                <div class="cta-buttons">
-                    <a href="#" class="cta-primary">Get Started</a>
-                    <a href="#" class="cta-secondary" id="playVideo">
-                        <span>Watch Demo</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                </div>
+                <p>Experience the future of customer service with our AI bots that understand and respond to human emotions.</p>
             </div>
         </section>
 
-        <!-- Other sections remain unchanged -->
+        <!-- Other sections as needed -->
 
     </main>
-
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="AI Bot Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <button id="closeVideo">Close</button>
-        </div>
-    </div>
 
     <div id="app">
       <div id="btn-container">
         <button id="start-btn">Start</button>
-        <button id="stop-btn" disabled>Stop</button>
+        <button id="stop-btn" disabled="true">Stop</button>
       </div>
       <div id="heading-container">
         <h2>Welcome to AI Bot Solutions</h2>
@@ -104,6 +85,8 @@
       <div id="chat"></div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script type="module" src="./src/main.ts"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             new Swiper('.swiper-container', {
@@ -121,116 +104,6 @@
                 },
                 effect: 'fade',
             });
-
-            const videoModal = document.getElementById('videoModal');
-            const playVideo = document.getElementById('playVideo');
-            const closeVideo = document.getElementById('closeVideo');
-
-            playVideo.addEventListener('click', function(e) {
-                e.preventDefault();
-                videoModal.style.display = 'flex';
-            });
-
-            closeVideo.addEventListener('click', function() {
-                videoModal.style.display = 'none';
-            });
-
-            // Bot functionality
-            const startBtn = document.getElementById('start-btn');
-            const stopBtn = document.getElementById('stop-btn');
-            const chatDiv = document.getElementById('chat');
-
-            let isListening = false;
-            let socket = null;
-
-            function connect() {
-                socket = new WebSocket('wss://evi-typescript-example-m2z3.vercel.app/ws/ws');
-
-                socket.onopen = function() {
-                    console.log('WebSocket connection opened');
-                };
-
-                socket.onmessage = function(event) {
-                    const message = JSON.parse(event.data);
-                    if (message.type === 'transcription') {
-                        chatDiv.innerHTML += `<p>You: ${message.text}</p>`;
-                    } else if (message.type === 'bot_response') {
-                        chatDiv.innerHTML += `<p>Bot: ${message.text}</p>`;
-                        speak(message.text);
-                    }
-                };
-
-                socket.onclose = function() {
-                    console.log('WebSocket connection closed');
-                    isListening = false;
-                    startBtn.disabled = false;
-                    stopBtn.disabled = true;
-                };
-
-                socket.onerror = function(error) {
-                    console.error('WebSocket error:', error);
-                };
-            }
-
-            function disconnect() {
-                if (socket) {
-                    socket.close();
-                }
-            }
-
-            function speak(text) {
-                const utterance = new SpeechSynthesisUtterance(text);
-                speechSynthesis.speak(utterance);
-            }
-
-            startBtn.addEventListener('click', function() {
-                if (!isListening) {
-                    isListening = true;
-                    connect();
-                    startBtn.disabled = true;
-                    stopBtn.disabled = false;
-                    chatDiv.innerHTML += '<p>Listening...</p>';
-                }
-            });
-
-            stopBtn.addEventListener('click', function() {
-                if (isListening) {
-                    isListening = false;
-                    disconnect();
-                    startBtn.disabled = false;
-                    stopBtn.disabled = true;
-                    chatDiv.innerHTML += '<p>Stopped listening.</p>';
-                }
-            });
-
-            // Initialize microphone
-            navigator.mediaDevices.getUserMedia({ audio: true })
-                .then(function(stream) {
-                    const mediaRecorder = new MediaRecorder(stream);
-                    let audioChunks = [];
-
-                    mediaRecorder.ondataavailable = function(event) {
-                        audioChunks.push(event.data);
-                    };
-
-                    mediaRecorder.onstop = function() {
-                        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-                        if (socket && socket.readyState === WebSocket.OPEN) {
-                            socket.send(audioBlob);
-                        }
-                        audioChunks = [];
-                    };
-
-                    setInterval(function() {
-                        if (isListening) {
-                            mediaRecorder.stop();
-                            mediaRecorder.start();
-                        }
-                    }, 5000);
-                })
-                .catch(function(error) {
-                    console.error('Error accessing microphone:', error);
-                });
         });
     </script>
 </body>
