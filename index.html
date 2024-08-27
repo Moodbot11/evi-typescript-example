@@ -106,25 +106,6 @@
             background-color: #3498db;
             border-radius: 3px;
         }
-        #chat p {
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 15px;
-            max-width: 80%;
-            word-wrap: break-word;
-        }
-        #chat p:nth-child(odd) {
-            background-color: #3498db;
-            color: white;
-            align-self: flex-end;
-            margin-left: auto;
-            border-bottom-right-radius: 0;
-        }
-        #chat p:nth-child(even) {
-            background-color: #bdc3c7;
-            color: #2c3e50;
-            border-bottom-left-radius: 0;
-        }
     </style>
 </head>
 <body class="font-sans">
@@ -258,4 +239,45 @@
         <h2>Welcome to AI Bot Solutions</h2>
         <p>
            Experience our emotional AI bot firsthand!
-          Click the
+          Click the "Start" button and begin talking to interact with our AI.
+        </p>
+      </div>
+      <div id="chat"></div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Swiper('.swiper-container', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5000,
+                },
+                effect: 'fade',
+            });
+
+            const videoModal = document.getElementById('videoModal');
+            const playVideo = document.getElementById('playVideo');
+            const closeVideo = document.getElementById('closeVideo');
+
+            playVideo.addEventListener('click', function(e) {
+                e.preventDefault();
+                videoModal.classList.remove('hidden');
+            });
+
+            closeVideo.addEventListener('click', function() {
+                videoModal.classList.add('hidden');
+            });
+        });
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
