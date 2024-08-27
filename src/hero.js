@@ -1,14 +1,16 @@
-const slides = [
+const slides: string[] = [
   'http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/beach-party-dj-set-K9SHFY4.jpg',
   'http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-cheering-with-cocktails-at-5V9ZUL7.jpg',
   'http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-drinking-cocktails-at-bar-o-9ZJAQLJ.jpg'
 ];
 
-export function initializeHero() {
+export function initializeHero(): void {
   const heroSection = document.getElementById('hero');
+  if (!heroSection) return;
+
   let currentSlide = 0;
 
-  function createSlide(src, index) {
+  function createSlide(src: string, index: number): void {
     const slide = document.createElement('div');
     slide.className = 'hero-slide';
     slide.style.backgroundImage = `url(${src})`;
@@ -18,7 +20,7 @@ export function initializeHero() {
 
   slides.forEach((slide, index) => createSlide(slide, index));
 
-  function nextSlide() {
+  function nextSlide(): void {
     const slides = heroSection.querySelectorAll('.hero-slide');
     slides[currentSlide].style.opacity = '0';
     currentSlide = (currentSlide + 1) % slides.length;
@@ -41,19 +43,25 @@ export function initializeHero() {
 
   heroSection.insertAdjacentHTML('beforeend', content);
 
-  document.getElementById('play-video').addEventListener('click', () => {
-    const modal = document.createElement('div');
-    modal.className = 'video-modal';
-    modal.innerHTML = `
-      <div class="modal-content">
-        <iframe width="560" height="315" src="https://myidecide.net/XVI8RE" frameborder="0" allowfullscreen></iframe>
-        <button class="close-modal">Close</button>
-      </div>
-    `;
-    document.body.appendChild(modal);
+  const playVideoButton = document.getElementById('play-video');
+  if (playVideoButton) {
+    playVideoButton.addEventListener('click', () => {
+      const modal = document.createElement('div');
+      modal.className = 'video-modal';
+      modal.innerHTML = `
+        <div class="modal-content">
+          <iframe width="560" height="315" src="https://myidecide.net/XVI8RE" frameborder="0" allowfullscreen></iframe>
+          <button class="close-modal">Close</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
 
-    modal.querySelector('.close-modal').addEventListener('click', () => {
-      document.body.removeChild(modal);
+      const closeButton = modal.querySelector('.close-modal');
+      if (closeButton) {
+        closeButton.addEventListener('click', () => {
+          document.body.removeChild(modal);
+        });
+      }
     });
-  });
+  }
 }
