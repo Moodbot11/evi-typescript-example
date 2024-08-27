@@ -1,64 +1,59 @@
-import { initializeHero } from './hero.js';
-
-// Initialize the hero section
-initializeHero();
 const slides = [
-  'https://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/beach-party-dj-set-K9SHFY4.jpg',
-  'https://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-cheering-with-cocktails-at-5V9ZUL7.jpg',
-  'https://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-drinking-cocktails-at-bar-o-9ZJAQLJ.jpg'
+  'http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/beach-party-dj-set-K9SHFY4.jpg',
+  'http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-cheering-with-cocktails-at-5V9ZUL7.jpg',
+  'http://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-drinking-cocktails-at-bar-o-9ZJAQLJ.jpg'
 ];
 
-let currentSlide = 0;
+export function initializeHero() {
+  const heroSection = document.getElementById('hero');
+  let currentSlide = 0;
 
-function createHeroSection() {
-  const heroContainer = document.createElement('div');
-  heroContainer.id = 'hero-container';
-  heroContainer.innerHTML = `
-    <section class="relative h-screen overflow-hidden">
-      ${slides.map((slide, index) => `
-        <div 
-          class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out"
-          style="opacity: ${index === 0 ? 1 : 0}; z-index: ${index === 0 ? 1 : 0}"
-        >
-          <img
-            src="${slide}"
-            alt="AI Sales Assistant slide ${index + 1}"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-      `).join('')}
-      <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
-      <div class="absolute inset-0 flex items-center z-20">
-        <div class="container mx-auto px-4">
-          <div class="max-w-3xl">
-            <h2 class="text-xl md:text-2xl text-white mb-4 font-light">Artificial Intelligence With Feelings</h2>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-6">
-              Outsells humans on average by 50%!
-            </h1>
-            <p class="text-white text-lg mb-8">
-              The future is here. Imagine 50% more sales at a fraction of the cost you're paying now for your sales team. You never have to pay commissions!
-            </p>
-            <div class="flex space-x-4">
-              <a href="/booking" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300 cursor-pointer">
-                Make an appointment now
-              </a>
-            </div>
-          </div>
-        </div>
+  function createSlide(src, index) {
+    const slide = document.createElement('div');
+    slide.className = 'hero-slide';
+    slide.style.backgroundImage = `url(${src})`;
+    slide.style.opacity = index === 0 ? '1' : '0';
+    heroSection.appendChild(slide);
+  }
+
+  slides.forEach((slide, index) => createSlide(slide, index));
+
+  function nextSlide() {
+    const slides = heroSection.querySelectorAll('.hero-slide');
+    slides[currentSlide].style.opacity = '0';
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].style.opacity = '1';
+  }
+
+  setInterval(nextSlide, 5000);
+
+  const content = `
+    <div class="hero-content">
+      <h2>Artificial Intelligence With Feelings</h2>
+      <h1>Outsells humans on average by 50%!</h1>
+      <p>The future is here. Imagine 50% more sales at a fraction of the cost you're paying now for your sales team. You never have to pay commissions!</p>
+      <div class="hero-buttons">
+        <a href="/booking" class="btn btn-primary">Make an appointment now to speak with Internet-Entity and a Human rep.</a>
+        <button class="btn btn-secondary" id="play-video">Play Video</button>
       </div>
-    </section>
+    </div>
   `;
 
-  document.body.insertBefore(heroContainer, document.body.firstChild);
+  heroSection.insertAdjacentHTML('beforeend', content);
 
-  setInterval(() => {
-    const slideElements = document.querySelectorAll('.hero-slide');
-    slideElements[currentSlide].style.opacity = '0';
-    slideElements[currentSlide].style.zIndex = '0';
-    currentSlide = (currentSlide + 1) % slides.length;
-    slideElements[currentSlide].style.opacity = '1';
-    slideElements[currentSlide].style.zIndex = '1';
-  }, 5000);
+  document.getElementById('play-video').addEventListener('click', () => {
+    const modal = document.createElement('div');
+    modal.className = 'video-modal';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <iframe width="560" height="315" src="https://myidecide.net/XVI8RE" frameborder="0" allowfullscreen></iframe>
+        <button class="close-modal">Close</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.querySelector('.close-modal').addEventListener('click', () => {
+      document.body.removeChild(modal);
+    });
+  });
 }
-
-createHeroSection();
