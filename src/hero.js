@@ -1,3 +1,7 @@
+import { initializeHero } from './hero.js';
+
+// Initialize the hero section
+initializeHero();
 const slides = [
   'https://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/beach-party-dj-set-K9SHFY4.jpg',
   'https://kfkit.rometheme.pro/besort/wp-content/uploads/sites/40/2022/11/happy-girls-having-fun-cheering-with-cocktails-at-5V9ZUL7.jpg',
