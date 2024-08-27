@@ -1,101 +1,146 @@
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-button {
-  padding: 10px 20px;
-  margin: 5px;
-  width: 100px;
-  font-size: 1em;
-  color: #333;
-  background-color: white;
-  border: 2px solid #333;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-button:hover,
-button:focus {
-  background-color: #333;
-  color: white;
-  border-color: #333;
-}
-
-button:disabled {
-  background-color: #e0e0e0;
-  color: #666;
-  border-color: #999;
-  cursor: not-allowed;
-}
-
-#app {
+body, html {
+  margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  width: 72%;
-  min-width: 900px;
-  padding: 24px;
-  margin: 0px;
+}
+
+#hero {
+  position: relative;
+  height: 100vh;
   overflow: hidden;
 }
 
-#btn-container {
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 10;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.close-modal {
+  display: block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Existing styles for the bot interface */
+#app {
+  padding: 2rem;
+}
+
+#btn-container {
+  margin-bottom: 1rem;
+}
+
+#btn-container button {
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#btn-container button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+#heading-container {
+  margin-bottom: 1rem;
 }
 
 #chat {
-  display: flex;
-  flex-direction: column;
-  height: 560px;
-  overflow-y: auto;
-  padding: 0 16px;
-}
-
-.chat-card {
-  background-color: white;
-  border-radius: 8px;
-  padding: 12px;
-  margin: 12px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  position: relative;
-  width: 600px;
-}
-
-.chat-card .role {
-  font-weight: bold;
-  font-size: 0.9em;
-}
-
-.chat-card .timestamp {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  font-size: 0.8em;
-  color: gray;
-}
-
-.chat-card .content {
-  margin-top: 12px;
-}
-
-.chat-card .scores {
-  display: flex;
-  justify-content: space-between;
-  width: 64%;
-  margin-top: 12px;
-  font-size: 0.8em;
-  color: gray;
-}
-
-.chat-card.user {
-  align-self: flex-start;
-}
-
-.chat-card.assistant {
-  align-self: flex-end;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  min-height: 200px;
 }
