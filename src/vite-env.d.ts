@@ -1,1 +1,1 @@
-import { defineConfig } from 'vite'
+/// <reference types="vite/client" /> 
